@@ -2,20 +2,33 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+char romanNumbersArray[10];
 
 //Create a function that returns the number of digits
 //create a fuction that applies the formation rule of decimal numbers
+
+/**
+ * @brief This initial description will walk through step by step to get this solution 
+ * 
+ */
+
+
+/**
+ * @brief 
+ * 
+ * @param num 
+ * @return int 
+ */
 int numberOfDigits(int num){
     int numDigits = 0;
     while(num > 0){
         num = num/10;
         numDigits++;
-        numberOfDigits(num);
     }
     return numDigits;
 }
 int* formationRuleDecimalNumbers(int number, int numDigits){
-    int power = 0, index = numDigits - 1, digit = 0, powerResult = 0;
+    int power = 0, index = numDigits - 1, digit = 0;
     int* numberArray = malloc(numDigits * sizeof(int));
     for(int i = 0; i < numDigits; i++){
         digit = (number % 10) * pow(10, power);
@@ -23,11 +36,9 @@ int* formationRuleDecimalNumbers(int number, int numDigits){
         power++;
         number /= 10;
     }
-    return numberArray;
-    
+    return numberArray;    
 }
 char* convertIntToRoman(int* decimalDigitsArray, int numDigts){
-    char* romanNumbersArray = malloc(10*sizeof(char));
     for(int i = 0, j = 0; i < numDigts; i++){
         if(decimalDigitsArray[i]>= 1 && decimalDigitsArray[i] < 5){
             if(decimalDigitsArray[i] == 4){
@@ -118,17 +129,14 @@ char* convertIntToRoman(int* decimalDigitsArray, int numDigts){
                 romanNumbersArray[j] = '\0';
         }
     }
+
     return romanNumbersArray;
 }
 char* intToRoman(int number){
     if(number >= 1 && number <= 3999){
         int numDigits = 0;
         numDigits = numberOfDigits(number);
-        printf("value: %d\n", numDigits);
         int* decimalDigitsArray = formationRuleDecimalNumbers(number, numDigits);
-        for(int i = 0; i < numDigits; i++){
-            printf("%d ", decimalDigitsArray[i]);
-        }
         char* romanNumber = convertIntToRoman(decimalDigitsArray, numDigits);
         return romanNumber;
     }else{
@@ -136,13 +144,17 @@ char* intToRoman(int number){
     }
 }
 int main(){
-    int number = 999;
     char* result = NULL; 
-    result = intToRoman(number);
+    for(int i = 1; i <= 1000; i++){
+        result = intToRoman(i);
+        printf("Output: %s\n", result);
+    }
+    return 0;
+    /*
     if(result == NULL){
         printf("Out of Scope!");
     }else{
-        printf("\n%s", result);
+        printf("output: %s\n", result);
     }
-    return 0;
+    return 0;*/
 }
