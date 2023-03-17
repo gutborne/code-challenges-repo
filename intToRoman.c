@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-char romanNumbersArray[10];
+char romanNumbersArray[16];
 
 //Create a function that returns the number of digits
 //create a fuction that applies the formation rule of decimal numbers
@@ -150,11 +150,4 @@ int main(){
         printf("Output: %s\n", result);
     }
     return 0;
-    /*
-    if(result == NULL){
-        printf("Out of Scope!");
-    }else{
-        printf("output: %s\n", result);
-    }
-    return 0;*/
 }
