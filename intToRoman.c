@@ -136,7 +136,7 @@ char* intToRoman(int number){
     }
 }
 int main(){
-    int number = 999;
+    int number = 288;
     char* result = NULL; 
     result = intToRoman(number);
     if(result == NULL){
