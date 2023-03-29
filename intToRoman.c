@@ -1,3 +1,13 @@
+/**
+ * @file intToRoman.c
+ * @author Mateus Gutemberg
+ * @brief 
+ * @version 0.1
+ * @date 2023-03-29
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -9,13 +19,11 @@ char romanNumbersArray[16];
 
 /**
  * @brief This initial description will walk through step by step to get this solution 
- * 
+ * @brief Description of the problem: https://leetcode.com/problems/integer-to-roman/
  */
 
-
 /**
- * @brief 
- * 
+ * @brief this function returns the number of digits of the @param num
  * @param num 
  * @return int 
  */
@@ -27,6 +35,14 @@ int numberOfDigits(int num){
     }
     return numDigits;
 }
+
+/**
+ * @brief This function will apply 
+ * <a href:https://en.wikipedia.org/wiki/Positional_notation> notational position</a>
+ * @param number 
+ * @param numDigits 
+ * @return int* 
+ */
 int* formationRuleDecimalNumbers(int number, int numDigits){
     int power = 0, index = numDigits - 1, digit = 0;
     int* numberArray = malloc(numDigits * sizeof(int));
@@ -38,6 +54,13 @@ int* formationRuleDecimalNumbers(int number, int numDigits){
     }
     return numberArray;    
 }
+
+/**
+ * @brief 
+ * @param decimalDigitsArray 
+ * @param numDigts 
+ * @return char* 
+ */
 char* convertIntToRoman(int* decimalDigitsArray, int numDigts){
     for(int i = 0, j = 0; i < numDigts; i++){
         if(decimalDigitsArray[i]>= 1 && decimalDigitsArray[i] < 5){
@@ -132,8 +155,15 @@ char* convertIntToRoman(int* decimalDigitsArray, int numDigts){
 
     return romanNumbersArray;
 }
+
+/**
+ * @brief this function convert int to roman number
+ * @param number 
+ * @return char* 
+ */
 char* intToRoman(int number){
-    if(number >= 1 && number <= 3999){
+    if(number >= 1 && number <= 3999){//this verification has to happen due to 
+        //constraint of the problem
         int numDigits = 0;
         numDigits = numberOfDigits(number);
         int* decimalDigitsArray = formationRuleDecimalNumbers(number, numDigits);
@@ -143,6 +173,7 @@ char* intToRoman(int number){
         return NULL;    
     }
 }
+
 int main(){
     char* result = NULL; 
     for(int i = 1; i <= 1000; i++){
